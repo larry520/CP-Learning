@@ -7,6 +7,12 @@
 int main()
 {
     std::cout << "Hello World!\n"; 
+	using namespace std;
+	int qq = 100;
+	int *p = &qq;
+	
+	cout << qq <<	endl << *p << endl << p<<endl<<&qq<<endl	;
+
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
