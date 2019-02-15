@@ -3,16 +3,48 @@
 
 #include "pch.h"
 #include <iostream>
+void struct_use();
+void pt_use();
 
 int main()
 {
     std::cout << "Hello World!\n"; 
+	pt_use();
+	struct_use();
+	return 0;
+}
+
+
+// 指针的使用
+void pt_use()
+{
 	using namespace std;
 	int qq = 100;
 	int *p = &qq;
-	
-	cout << qq <<	endl << *p << endl << p<<endl<<&qq<<endl	;
+	int *pp = new int;
+	cout << pp << endl << *pp << endl << &pp << endl;
+	*pp = *pp + qq;
+	cout << pp << endl << *pp << endl << &pp;
+}
 
+
+// 结构体使用及结构体指针
+void struct_use()
+{
+	struct fruit   // 结构体定义
+	{
+		int apple;
+		int orange;
+		int cherry;
+	};
+
+	fruit fruitNo = { 6,5,2 };
+	fruit *pt = &fruitNo;
+	using namespace std;
+	cout << "fruitNo member: " << endl
+		<< "apple: " << fruitNo.apple << endl
+		<< "orange: " << pt->orange << endl
+		<< "cherry: " << pt->cherry << endl;
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
