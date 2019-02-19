@@ -9,8 +9,8 @@ void pt_use();
 int main()
 {
     std::cout << "Hello World!\n"; 
-	pt_use();
-	struct_use();
+	//pt_use();
+	//struct_use();
 	return 0;
 }
 
@@ -26,7 +26,6 @@ void pt_use()
 	*pp = *pp + qq;
 	cout << pp << endl << *pp << endl << &pp;
 }
-
 
 // 结构体使用及结构体指针
 void struct_use()
@@ -45,7 +44,18 @@ void struct_use()
 		<< "apple: " << fruitNo.apple << endl
 		<< "orange: " << pt->orange << endl
 		<< "cherry: " << pt->cherry << endl;
+
+	struct years
+	{
+		int year;
+	};
+	years s01, s02, s03;
+	s01.year = 1990;
+	years *pa = &s02;
+	pa->year = 1999;
 }
+
+void 
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
 // 调试程序: F5 或调试 >“开始调试”菜单
