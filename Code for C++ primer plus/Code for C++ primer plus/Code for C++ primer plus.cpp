@@ -7,6 +7,8 @@
 int main()
 {
     std::cout << "Hello World!\n"; 
+	using namespace std;
+	cout << "I Love C++, that's a prefect program language! \n";
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
