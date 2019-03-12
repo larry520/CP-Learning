@@ -5,12 +5,24 @@
 #include <iostream>
 void struct_use();
 void pt_use();
+void quote();
 
 int main()
 {
     std::cout << "Hello World!\n"; 
+	using namespace std;
 	//pt_use();
 	//struct_use();
+	int sum = 0, value = 0;
+	while(cin>>value)    //输入异常时退出，如输入 字母
+	{
+		sum += value;
+		cout << "good job" << endl;
+
+	}
+	cout << "Sum is :" << sum <<endl;
+
+
 	return 0;
 }
 
@@ -49,13 +61,22 @@ void struct_use()
 	{
 		int year;
 	};
-	years s01, s02, s03;
+	years s01, s02;
 	s01.year = 1990;
 	years *pa = &s02;
 	pa->year = 1999;
 }
 
-void 
+//引用，即和引用变量指向同一地址。两个变量同时作用于该地址存储值
+void quote()
+{
+	int j0 = 1;
+	int i = j0;
+	int &k = i;
+	j0 = 2;
+	std::cout << k << std::endl;
+}
+
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
 // 调试程序: F5 或调试 >“开始调试”菜单
