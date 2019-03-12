@@ -1,29 +1,36 @@
-// Code for C++ primer plus.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
-//
+﻿// use for c++ learning
 
 #include "pch.h"
 #include <iostream>
+#include <string>
+
 void struct_use();
 void pt_use();
 void quote();
+void string_test();
 
 int main()
 {
     std::cout << "Hello World!\n"; 
-	using namespace std;
 	//pt_use();
 	//struct_use();
-	int sum = 0, value = 0;
-	while(cin>>value)    //输入异常时退出，如输入 字母
-	{
-		sum += value;
-		cout << "good job" << endl;
-
-	}
-	cout << "Sum is :" << sum <<endl;
+	string_test();
 
 
 	return 0;
+}
+
+// String option   使用string需要#include<string> 头文件，以及 using std::string两行代码。
+void string_test()
+{
+	
+	using namespace std;
+	string s1= "hey ha! ";
+	string s2 = "good";
+	string s3("job!");
+	string	&s4 = s1;
+	string	s5(6, '6');
+	cout << s4 << " " << s2 << " " << s3 <<endl<< s5 << endl;
 }
 
 
@@ -77,6 +84,16 @@ void quote()
 	j0 = 2;
 	std::cout << k << std::endl;
 }
+
+
+
+
+
+
+
+
+
+
 
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
