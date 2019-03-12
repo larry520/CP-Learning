@@ -1,4 +1,4 @@
-﻿// Code for C++ primer plus.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+// Code for C++ primer plus.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
 //
 
 #include "pch.h"
@@ -65,6 +65,7 @@ void struct_use()
 	s01.year = 1990;
 	years *pa = &s02;
 	pa->year = 1999;
+	cout << "I Love C++, that's a prefect program language! \n";
 }
 
 //引用，即和引用变量指向同一地址。两个变量同时作用于该地址存储值
