@@ -33,7 +33,6 @@ void string_test()
 	cout << s4 << " " << s2 << " " << s3 <<endl<< s5 << endl;
 }
 
-
 // 指针的使用
 void pt_use()
 {
