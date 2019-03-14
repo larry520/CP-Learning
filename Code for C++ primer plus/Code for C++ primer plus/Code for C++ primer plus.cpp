@@ -3,28 +3,63 @@
 #include "pch.h"
 #include <iostream>
 #include <string>
+#include <vector>
 
+using namespace std;
 void struct_use();
 void pt_use();
 void quote();
 void string_test();
+void vetcor_type();
 
 int main()
 {
     std::cout << "Hello World!\n"; 
+	using namespace std;
+
 	//pt_use();
 	//struct_use();
-	string_test();
-
+	//string_test();
+	vetcor_type();
+	
 
 	return 0;
+}
+
+//vector 类型的使用
+
+void vetcor_type()
+{
+	using std::vector;
+	vector<int> ivec1{ 666 };						// 创建1个元素，初始值为666
+	vector<int> ivec2(10, 1);						//创建10个元素，初始值为1
+	cout << ivec2[3] << endl << ivec1[0] << endl;
+	
+	vector<unsigned> scores(11, 0);
+	unsigned grade;
+	while (cin>>grade)
+	{
+		if (grade <= 100) 
+		{  
+			// 统计各分数段的数量，并存在scores里面。
+			++scores[grade / 10];
+			cout << grade / 10 << endl;
+		}	
+	}
+	// 输出各分数段的数量
+	cout << "The scores destribution are:" << endl;
+	for (int i = 0; i < 10; i++)
+	{
+		cout <<i*10<<" ~ "<<(i+1)*10<<": "<< scores[i] << endl;
+	}
+	cout << " 100 ： " << scores[10] << endl;
 }
 
 // String option   使用string需要#include<string> 头文件，以及 using std::string两行代码。
 void string_test()
 {
 	
-	using namespace std;
+	using std::string;
 	string s1= "hey ha! ";
 	string s2 = "good";
 	string s3("job!");
