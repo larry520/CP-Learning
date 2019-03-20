@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "SerialPort.h"
 
 using namespace std;
 void struct_use();
@@ -20,14 +21,42 @@ int main()
 	//pt_use();
 	//struct_use();
 	//string_test();
-	vetcor_type();
+	//vetcor_type();
 	
+	return 0;
+}
+
+// 串口操作
+int _tmain(int argc, _TCHAR* argv[])
+{
+
+	CSerialPort mySerialPort;
+
+	if (!mySerialPort.InitPort(2))
+	{
+		std::cout << "initPort fail !" << std::endl;
+	}
+	else
+	{
+		std::cout << "initPort success !" << std::endl;
+	}
+
+	if (!mySerialPort.OpenListenThread())
+	{
+		std::cout << "OpenListenThread fail !" << std::endl;
+	}
+	else
+	{
+		std::cout << "OpenListenThread success !" << std::endl;
+	}
+
+	int temp;
+	std::cin >> temp;
 
 	return 0;
 }
 
 //vector 类型的使用
-
 void vetcor_type()
 {
 	using std::vector;
