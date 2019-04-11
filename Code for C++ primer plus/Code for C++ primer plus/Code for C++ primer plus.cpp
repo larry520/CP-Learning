@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include "SerialPort.h"
+#include<windows.h>
 
 using namespace std;
 void struct_use();
@@ -12,27 +13,99 @@ void pt_use();
 void quote();
 void string_test();
 void vetcor_type();
+int serail_test(int argc);
+void exception_test();
+long long fact();
+long long fact_sub();
 
 int main()
 {
     std::cout << "Hello World!\n"; 
 	using namespace std;
-
+	
 	//pt_use();
 	//struct_use();
 	//string_test();
 	//vetcor_type();
+	//serail_test(1);
+	//exception_test();
+	fact();
 	
 	return 0;
 }
 
+// 阶乘计算
+long long fact_sub() {
+	int num;
+	long long count=1;
+	std::cout << "plsease input a positive integer: " << std::endl;
+	std::cin >> num;
+	std::cout << "num number:"<< num<< std::endl;
+	cin.clear();
+	cin.ignore(1024, '\n');
+	if (num <= 0 || int(num)!=num) 
+		throw "you input a wrong number!";
+	
+	while (num>0)
+	{
+		count = count * num;
+		std::cout << count << " num: " << num << std::endl;
+		if (count < 0)
+			throw " Attention, numerical calculation overflow!";
+		Sleep(5);
+		num--;
+	}
+	return(count);
+}
+long long fact() {
+	long long count = -1;
+	while (true) {
+		try {
+			count = fact_sub();
+		}
+		catch (const char* msg) {
+			cerr << msg << endl;
+			cout << "input Y for continue,  any other key for quit. " << endl;
+			char tag;
+			cin >> tag;
+			if (toupper(tag) != 'Y') {
+				break;
+			}
+			else
+				continue;
+			cin.clear();
+			cin.ignore(1024,'\n');
+		}
+	}
+	return(count);
+}
+
+// 异常处理
+void exception_test()
+{	
+	int num1, num2;
+	for (int i = 1; i < 5;i++) {
+		std::cin >> num1 >> num2;
+		std::cout << endl;
+		try {
+			if (num2 == 0) 
+				throw "Oh dear, we can't divide num1 by zero~ ";
+			std::cout << num1 / num2 << endl;
+		// 
+		}catch (const char* msg) {   
+			cerr << msg << endl;
+		}
+		
+	}
+}
+
 // 串口操作
-int _tmain(int argc, _TCHAR* argv[])
+int serail_test(int argc)
 {
 
 	CSerialPort mySerialPort;
-
-	if (!mySerialPort.InitPort(2))
+	//初始化串口 COM2
+	if (!mySerialPort.InitPort(argc))   
 	{
 		std::cout << "initPort fail !" << std::endl;
 	}
@@ -40,7 +113,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	{
 		std::cout << "initPort success !" << std::endl;
 	}
-
+	//开启监听线程 
 	if (!mySerialPort.OpenListenThread())
 	{
 		std::cout << "OpenListenThread fail !" << std::endl;
@@ -50,9 +123,10 @@ int _tmain(int argc, _TCHAR* argv[])
 		std::cout << "OpenListenThread success !" << std::endl;
 	}
 
+
 	int temp;
 	std::cin >> temp;
-
+	std::cout << "You just input: " << temp << endl;
 	return 0;
 }
 
