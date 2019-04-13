@@ -6,6 +6,8 @@
 #include <vector>
 #include "SerialPort.h"
 #include<windows.h>
+#include"Stock.h"
+#include"Sales_data.h"
 
 using namespace std;
 void struct_use();
@@ -17,6 +19,12 @@ int serail_test(int argc);
 void exception_test();
 long long fact();
 long long fact_sub();
+void class_t();
+void class_t2();
+void def_acpra(int a = 10, string b = "very good!", string::size_type c = 66);
+void sale_book();
+
+
 
 int main()
 {
@@ -29,9 +37,45 @@ int main()
 	//vetcor_type();
 	//serail_test(1);
 	//exception_test();
-	fact();
-	
+	//fact();
+	//class_t2();
+	//sale_book();
+
 	return 0;
+}
+
+// 类操作2
+void sale_book()
+{
+	Sales_data S1, S2;
+	S1.read();
+	S1.print();
+	S2.read();
+	S2.print();
+	S1.combine(S2);
+}
+
+// 默认实参  如果没有显示的使用实参进行赋值，则会采用默认实参。局部变量不会影响默认实验值
+void def_acpra(int a/*= 10*/, string b/*="very good!"*/, string::size_type c/*=66*/)
+{
+	std::cout << "a: " << a << "\n b: " << b << "\n c: " << c << "\n";
+}
+
+// 类操作1
+void class_t()
+{
+	Stock stock1("Larry Tec", 100, 60);
+	stock1.show();
+	stock1.buy(10, 50);
+	stock1.update(100);
+	Stock stock2("Google Page", 1000, 3);
+	stock1.sell(20, 80);
+}
+void class_t2()
+{
+	int a = 100;
+	def_acpra(a);
+	def_acpra();
 }
 
 // 阶乘计算
