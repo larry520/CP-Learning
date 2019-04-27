@@ -69,3 +69,10 @@ void Sales_data::print()
 	std::cout << "Book ISBN: " << serialNo << " Count: " << count
 		<< " Price: " << price << "\n";
 }
+
+Sales_data add(const Sales_data &lhs, const Sales_data &rhs)
+{
+	Sales_data sum = lhs;
+	sum.combine(rhs);
+	return sum;
+}

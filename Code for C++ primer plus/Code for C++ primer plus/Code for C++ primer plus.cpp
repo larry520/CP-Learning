@@ -43,16 +43,30 @@ int main()
 
 	return 0;
 }
+//对象指针 
+// Coordinate *p = new Coordinate();
+// p->m_iX = 10; // (*p).m_iX = 10;    指针使用时采用（*p）为一个指针对象，可直接访问成员。
+// p->m_iY = 20; // (*p).m_iY = 20;
+// delete p;
+// p = NULL;
+// ------------this 指针------------------------
+// this 指针为对本身对象的引用  指针与引用实质上都是指向地址
+
+
+
+
 
 // 类操作2
 void sale_book()
 {
-	Sales_data S1, S2;
+	Sales_data S1, S2, S3; 
 	S1.read();
 	S1.print();
 	S2.read();
 	S2.print();
-	S1.combine(S2);
+	// S1.combine(S2);
+	S3 = add(S1, S2);
+	S3.print();
 }
 
 // 默认实参  如果没有显示的使用实参进行赋值，则会采用默认实参。局部变量不会影响默认实验值
@@ -200,6 +214,32 @@ void vetcor_type()
 		cout <<i*10<<" ~ "<<(i+1)*10<<": "<< scores[i] << endl;
 	}
 	cout << " 100 ： " << scores[10] << endl;
+}
+
+void vector_type2()
+{
+	vector<int> svea = { 1 };
+	vector<int> sveb(svea);
+	vector<int> svec = svea;
+	vector<int> sved{ 0,1,2,3,4 };
+	vector<int> svef(5);
+	vector<int> svef(5);  // 5个元素，默认初始化为0 
+	vector<int>::iterator p = svef.begin();  // 容器指针的使用 auto 定义元素比较方便，统一
+	auto n = svef.end();
+	auto m = *svef.begin(); // 指向第一个元素
+	cout << "value of m = " << m << endl;
+	// 容器遍历元素
+	while (p != n )  
+	{
+		cout << "value of svef = " << *p << endl;
+		p++;
+	}
+	int a, b, c, d;
+	a=svec.front();
+	b = *svec.begin();
+	c = svec.at(0);
+	d = svec[0];
+	cout << "a: " << a << " b: " << b << " c: "<<c << " d: " << d;
 }
 
 // String option   使用string需要#include<string> 头文件，以及 using std::string两行代码。

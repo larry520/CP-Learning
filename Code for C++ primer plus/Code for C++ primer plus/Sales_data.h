@@ -22,4 +22,6 @@ public:
 	void print();
 };
 
+Sales_data add(const Sales_data &lhs, const Sales_data &rhs);
+
 #endif
