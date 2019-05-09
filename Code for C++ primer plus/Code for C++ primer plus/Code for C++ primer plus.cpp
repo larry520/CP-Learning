@@ -8,6 +8,8 @@
 #include<windows.h>
 #include"Stock.h"
 #include"Sales_data.h"
+#include<algorithm>
+#include<numeric>
 
 using namespace std;
 void struct_use();
@@ -15,6 +17,7 @@ void pt_use();
 void quote();
 void string_test();
 void vetcor_type();
+void vector_type2();
 int serail_test(int argc);
 void exception_test();
 long long fact();
@@ -23,14 +26,16 @@ void class_t();
 void class_t2();
 void def_acpra(int a = 10, string b = "very good!", string::size_type c = 66);
 void sale_book();
-
+void generic_algorithm();
 
 
 int main()
 {
     std::cout << "Hello World!\n"; 
 	using namespace std;
-	
+	generic_algorithm();
+
+
 	//pt_use();
 	//struct_use();
 	//string_test();
@@ -53,7 +58,53 @@ int main()
 // this 指针为对本身对象的引用  指针与引用实质上都是指向地址
 
 
-
+//泛型算法
+void generic_algorithm()
+{
+	vector<int> serial_Nm;
+	int ia[] = { 1,2,3,4 };
+	for (size_t i = 0; i < sizeof(ia)/sizeof(ia[0]); i++)
+	{
+		serial_Nm.push_back(ia[i]);
+	}
+	
+	// 泛型运算  求和 accumulate 只支持int类型的求和
+	int sum = accumulate(serial_Nm.cbegin(), serial_Nm.cend(), 0);
+	for (size_t i = 0; i < serial_Nm.size(); i++)
+	{
+		std::cout <<"serial_Nm"<<i<<": " <<serial_Nm[i]<<"\n";
+	}
+	cout << "the sum of serial_Nm:" << sum<<endl;
+	vector<string> sCars;
+	string word;
+	cout << "Please input cars name to sCars:" << endl;
+	while (cin >> word) // 向容器内输入字符串
+	{
+		sCars.push_back(word);
+	}
+	sort(sCars.begin(), sCars.end()); // 对容器元素进行排序
+	//将重复元素放到最后，返回不重复尾部位置
+	vector<string>::iterator p = sCars.begin();
+	while (p != sCars.end())  // 打印sCars 内容
+	{
+		if (p == sCars.begin()) {
+			cout << endl<<"sCars after sorted: "<<endl;
+		}
+		cout << *p << " ";
+		p++;
+	}
+	auto end_unique = unique(sCars.begin(), sCars.end()); 
+	sCars.erase(end_unique, sCars.end()); // 删除重复元素
+	p= sCars.begin(); // 将 p 指向容器第一个元素
+	while (p!= sCars.end())  // 打印sCars 内容
+	{
+		if (p == sCars.begin()) {
+			cout << endl << "sCars after sorted and cut out the repetition : "<<endl;
+		}
+		cout << *p <<" "  ;
+		p++;
+	}
+}
 
 
 // 类操作2
@@ -222,14 +273,13 @@ void vector_type2()
 	vector<int> sveb(svea);
 	vector<int> svec = svea;
 	vector<int> sved{ 0,1,2,3,4 };
-	vector<int> svef(5);
 	vector<int> svef(5);  // 5个元素，默认初始化为0 
 	vector<int>::iterator p = svef.begin();  // 容器指针的使用 auto 定义元素比较方便，统一
 	auto n = svef.end();
 	auto m = *svef.begin(); // 指向第一个元素
 	cout << "value of m = " << m << endl;
 	// 容器遍历元素
-	while (p != n )  
+	while (p != svef.end())
 	{
 		cout << "value of svef = " << *p << endl;
 		p++;
