@@ -58,6 +58,8 @@ int main()
 // this 指针为对本身对象的引用  指针与引用实质上都是指向地址
 
 
+//
+
 //泛型算法
 void generic_algorithm()
 {
@@ -78,14 +80,17 @@ void generic_algorithm()
 	vector<string> sCars;
 	string word;
 	cout << "Please input cars name to sCars:" << endl;
-	while (cin >> word) // 向容器内输入字符串
-	{
-		sCars.push_back(word);
-	}
+	//while (cin >> word) // 向容器内输入字符串
+	//{
+	//	sCars.push_back(word);
+	//}
+	sCars = { "Lexus", "BMW", "BMW","Mercedes","bentley", "porsche", "maserati","lamborghini",
+	"jeep","Audi","toyota"};
 	sort(sCars.begin(), sCars.end()); // 对容器元素进行排序
 	//将重复元素放到最后，返回不重复尾部位置
 	vector<string>::iterator p = sCars.begin();
-	while (p != sCars.end())  // 打印sCars 内容
+	// 打印sCars 内容
+	while (p != sCars.end())  
 	{
 		if (p == sCars.begin()) {
 			cout << endl<<"sCars after sorted: "<<endl;
@@ -93,19 +98,32 @@ void generic_algorithm()
 		cout << *p << " ";
 		p++;
 	}
-	auto end_unique = unique(sCars.begin(), sCars.end()); 
-	sCars.erase(end_unique, sCars.end()); // 删除重复元素
-	p= sCars.begin(); // 将 p 指向容器第一个元素
-	while (p!= sCars.end())  // 打印sCars 内容
+	auto end_unique = unique(sCars.begin(), sCars.end()); // 删除重复元素
+	//sCars.erase(end_unique, sCars.end()); // 删除重复元素
+	// 将字符按长度来排列， lambda表达式使同长度的按顺序排列
+	stable_sort(sCars.begin(), sCars.end(), [](const string &a, const string &b)
+	{ return a.size() < b.size(); });
+	
+	// 使用lambda与STL函数 打印sCars 内容
+	cout << endl<< endl << "sCars after stable_sorted : " << endl;
+	for_each(sCars.begin(), sCars.end(), [](string val)
 	{
-		if (p == sCars.begin()) {
-			cout << endl << "sCars after sorted and cut out the repetition : "<<endl;
-		}
-		cout << *p <<" "  ;
-		p++;
-	}
-}
+		cout << val << " ";
+	});
+	// 使用for循环 打印sCars 内容
+	cout << endl << endl << "使用for循环 打印sCars 内容 1 : " << endl;
+	for(auto val:sCars)
+		cout << val << " ";
+	
+	cout << endl << endl << "使用for循环 打印sCars 内容 2 : " << endl;
+	for (auto r_iter = sCars.begin();
+		r_iter != sCars.end();
+		r_iter++)
+		cout << *r_iter <<" ";
 
+
+
+}
 
 // 类操作2
 void sale_book()
@@ -361,19 +379,3 @@ void quote()
 
 
 
-
-
-
-
-
-
-// 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
-// 调试程序: F5 或调试 >“开始调试”菜单
-
-// 入门提示: 
-//   1. 使用解决方案资源管理器窗口添加/管理文件
-//   2. 使用团队资源管理器窗口连接到源代码管理
-//   3. 使用输出窗口查看生成输出和其他消息
-//   4. 使用错误列表窗口查看错误
-//   5. 转到“项目”>“添加新项”以创建新的代码文件，或转到“项目”>“添加现有项”以将现有代码文件添加到项目
-//   6. 将来，若要再次打开此项目，请转到“文件”>“打开”>“项目”并选择 .sln 文件
