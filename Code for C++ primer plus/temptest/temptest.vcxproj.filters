@@ -27,6 +27,9 @@
     <ClInclude Include="Arry.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="word_search.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -45,6 +48,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Arry.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="word_search.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="test.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

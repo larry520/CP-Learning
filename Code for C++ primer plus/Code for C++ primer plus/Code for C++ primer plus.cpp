@@ -10,6 +10,7 @@
 #include"Sales_data.h"
 #include<algorithm>
 #include<numeric>
+#include"Worker.h"
 
 using namespace std;
 void struct_use();
@@ -33,9 +34,13 @@ int main()
 {
     std::cout << "Hello World!\n"; 
 	using namespace std;
-	generic_algorithm();
+	Worker *p = new Worker;
+	p->work();
+	delete p;
+	p = NULL;
+	
 
-
+	//generic_algorithm();
 	//pt_use();
 	//struct_use();
 	//string_test();

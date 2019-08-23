@@ -155,6 +155,7 @@
     <ClInclude Include="Coordinate.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Struct_function.h" />
+    <ClInclude Include="word_search.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Arry.cpp" />
@@ -168,6 +169,8 @@
     </ClCompile>
     <ClCompile Include="Struct_function.cpp" />
     <ClCompile Include="temptest.cpp" />
+    <ClCompile Include="test.cpp" />
+    <ClCompile Include="word_search.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
