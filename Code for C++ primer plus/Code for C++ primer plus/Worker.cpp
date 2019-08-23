@@ -18,4 +18,6 @@ Worker::~Worker()
 void Worker::work()
 {
 	cout << "work()" << endl;
+	m_iAge = 20;
+	m_strName = "Justin";
 }

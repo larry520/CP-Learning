@@ -7,5 +7,6 @@ public:
 	Worker();
 	~Worker();
 	void work();
+
 };
 
